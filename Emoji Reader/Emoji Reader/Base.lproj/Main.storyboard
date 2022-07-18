@@ -14,13 +14,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellPrototype" id="rwG-lQ-DZu">
-                                <rect key="frame" x="20" y="49.5" width="374" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="emojiCell" rowHeight="80" id="rwG-lQ-DZu" customClass="EmojiTableViewCell" customModule="Emoji_Reader" customModuleProvider="target">
+                                <rect key="frame" x="20" y="49.5" width="374" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rwG-lQ-DZu" id="8qj-jy-1ea">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Z9v-qO-SOJ">
+                                            <rect key="frame" x="8" y="8" width="350" height="64"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😀" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTw-pl-Hrf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="WTw-pl-Hrf" secondAttribute="height" multiplier="1:1" id="WIq-wM-Qls"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1Nd-5p-cDL">
+                                                    <rect key="frame" x="74" y="0.0" width="276" height="64"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6R-DW-iOw">
+                                                            <rect key="frame" x="0.0" y="0.0" width="276" height="32"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep smiling every day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cr7-K9-hAg">
+                                                            <rect key="frame" x="0.0" y="32" width="276" height="32"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Z9v-qO-SOJ" secondAttribute="trailing" constant="16" id="2qs-mT-hO3"/>
+                                        <constraint firstItem="Z9v-qO-SOJ" firstAttribute="leading" secondItem="8qj-jy-1ea" secondAttribute="leading" constant="8" id="9g5-xt-BnA"/>
+                                        <constraint firstItem="Z9v-qO-SOJ" firstAttribute="top" secondItem="8qj-jy-1ea" secondAttribute="top" constant="8" id="Hrr-d1-hUU"/>
+                                        <constraint firstAttribute="bottom" secondItem="Z9v-qO-SOJ" secondAttribute="bottom" constant="8" id="kFy-L7-GaE"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="Cr7-K9-hAg" id="JQ9-TC-KeA"/>
+                                    <outlet property="emojiLabel" destination="WTw-pl-Hrf" id="fDY-oa-fK9"/>
+                                    <outlet property="nameLabel" destination="d6R-DW-iOw" id="Dr0-Qb-g3x"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
