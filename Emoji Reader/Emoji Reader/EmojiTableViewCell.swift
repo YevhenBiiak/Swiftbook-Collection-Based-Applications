@@ -13,6 +13,14 @@ class EmojiTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    var object: Emoji? {
+        didSet {
+            emojiLabel.text = object?.emoji
+            nameLabel.text = object?.name
+            descriptionLabel.text = object?.description
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,5 +31,4 @@ class EmojiTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }
