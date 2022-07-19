@@ -22,6 +22,19 @@ class TableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = editButtonItem
     }
     
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        let sourceVC = segue.source as? AddNewEmojiTableViewController
+        guard let emojiModel = sourceVC?.emojiModel else { return }
+        
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            emojiArray[selectedIndexPath.row] = emojiModel
+            tableView.reloadRows(at: [selectedIndexPath], with: .automatic)
+        } else {
+            emojiArray.append(emojiModel)
+            tableView.insertRows(at: [IndexPath(row: emojiArray.count - 1, section: 0)], with: .automatic)
+        }
+    }
+    
     // MARK: - TableViewDataSource TableViewDataDelegate
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,7 +53,10 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "AddNewEmojiTableViewController") as! AddNewEmojiTableViewController
+        vc.title = "Edit"
+        vc.emojiModel = emojiArray[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -83,6 +99,7 @@ class TableViewController: UITableViewController {
             action.backgroundColor = .systemGray4
             action.image = UIImage(systemName: "heart.fill")
             if emojiArray[indexPath.row].isFavorite {
+                action.backgroundColor = .systemGray6
                 action.image = action.image?.withConfiguration(
                     UIImage.SymbolConfiguration(hierarchicalColor: .red)
                 )
@@ -93,10 +110,3 @@ class TableViewController: UITableViewController {
         return UISwipeActionsConfiguration(actions: [doneAction, favoriteAction])
     }
 }
-
-
-
-protocol IdentifiableCell {}
-extension IdentifiableCell { static var cellIdentifier: String { String(describing: self) }}
-extension UITableViewCell: IdentifiableCell {}
-
