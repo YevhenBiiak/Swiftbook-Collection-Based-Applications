@@ -39,6 +39,10 @@ class TableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
@@ -56,6 +60,37 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         emojiArray.insert(emojiArray.remove(at: sourceIndexPath.row), at: destinationIndexPath.row)
+    }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let doneAction: UIContextualAction = {
+            let action = UIContextualAction(style: .destructive, title: "done") { [unowned self] action, view, completion in
+                emojiArray.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                completion(true)
+            }
+            action.backgroundColor = .systemGreen
+            action.image = UIImage(systemName: "checkmark.circle")
+            return action
+        }()
+        
+        let favoriteAction: UIContextualAction = {
+            let action = UIContextualAction(style: .normal, title: "favorite") { [unowned self] action, view, completion in
+                emojiArray[indexPath.row].isFavorite.toggle()
+                completion(true)
+            }
+            action.backgroundColor = .systemGray4
+            action.image = UIImage(systemName: "heart.fill")
+            if emojiArray[indexPath.row].isFavorite {
+                action.image = action.image?.withConfiguration(
+                    UIImage.SymbolConfiguration(hierarchicalColor: .red)
+                )
+            }
+            return action
+        }()
+        
+        return UISwipeActionsConfiguration(actions: [doneAction, favoriteAction])
     }
 }
 
