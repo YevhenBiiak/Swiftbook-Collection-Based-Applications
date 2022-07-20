@@ -74,51 +74,74 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zpU-OI-5xo">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6v-B7-KCv">
-                                <rect key="frame" x="348" y="60" width="50" height="38"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
-                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="closeButtonPressed:" destination="Ust-do-ApA" eventType="touchUpInside" id="uWJ-9l-FXS"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKN-aM-wli">
-                                <rect key="frame" x="76" y="69" width="262" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mrf-BD-1Kw">
-                                <rect key="frame" x="144" y="791" width="126" height="31"/>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" title="Tap to Share" imagePadding="5">
-                                    <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="medium"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="shareButtonTapped:" destination="Ust-do-ApA" eventType="touchUpInside" id="U0X-OO-hFG"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-0m-XAQ">
+                                <rect key="frame" x="16" y="60" width="382" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mrf-BD-1Kw">
+                                        <rect key="frame" x="0.0" y="0.0" width="44.5" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="RRr-jK-7xH"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" imagePadding="5">
+                                            <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="large"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="shareButtonTapped:" destination="Ust-do-ApA" eventType="touchUpInside" id="U0X-OO-hFG"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKN-aM-wli">
+                                        <rect key="frame" x="54.5" y="5.5" width="273.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6v-B7-KCv">
+                                        <rect key="frame" x="338" y="0.0" width="44" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="H2K-BK-uWu"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                            <color key="baseForegroundColor" systemColor="labelColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="closeButtonPressed:" destination="Ust-do-ApA" eventType="touchUpInside" id="uWJ-9l-FXS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KDQ-hZ-ZY6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="UKN-aM-wli" firstAttribute="centerX" secondItem="3sb-e9-3gH" secondAttribute="centerX" id="4cK-mA-LkR"/>
-                            <constraint firstItem="V6v-B7-KCv" firstAttribute="leading" secondItem="UKN-aM-wli" secondAttribute="trailing" constant="10" id="Dfj-Ju-WlD"/>
-                            <constraint firstItem="V6v-B7-KCv" firstAttribute="top" secondItem="KDQ-hZ-ZY6" secondAttribute="top" constant="16" id="E5f-Td-Ou1"/>
-                            <constraint firstItem="KDQ-hZ-ZY6" firstAttribute="bottom" secondItem="Mrf-BD-1Kw" secondAttribute="bottom" constant="40" id="I6d-Ce-jGq"/>
+                            <constraint firstItem="fcp-0m-XAQ" firstAttribute="leading" secondItem="KDQ-hZ-ZY6" secondAttribute="leading" constant="16" id="5dk-cn-nIg"/>
                             <constraint firstItem="zpU-OI-5xo" firstAttribute="trailing" secondItem="KDQ-hZ-ZY6" secondAttribute="trailing" id="IRb-He-tsJ"/>
+                            <constraint firstAttribute="bottom" secondItem="zpU-OI-5xo" secondAttribute="bottom" id="V9d-81-HOw"/>
                             <constraint firstItem="zpU-OI-5xo" firstAttribute="bottom" secondItem="KDQ-hZ-ZY6" secondAttribute="bottom" id="YXA-5s-WsN"/>
                             <constraint firstItem="zpU-OI-5xo" firstAttribute="top" secondItem="KDQ-hZ-ZY6" secondAttribute="top" id="fE5-Ws-lhh"/>
-                            <constraint firstItem="UKN-aM-wli" firstAttribute="top" secondItem="KDQ-hZ-ZY6" secondAttribute="top" constant="25" id="g1f-x0-eDq"/>
+                            <constraint firstItem="fcp-0m-XAQ" firstAttribute="top" secondItem="KDQ-hZ-ZY6" secondAttribute="top" constant="16" id="kMz-Gj-I1b"/>
                             <constraint firstItem="zpU-OI-5xo" firstAttribute="leading" secondItem="KDQ-hZ-ZY6" secondAttribute="leading" id="kfR-XQ-sh7"/>
-                            <constraint firstItem="KDQ-hZ-ZY6" firstAttribute="trailing" secondItem="V6v-B7-KCv" secondAttribute="trailing" constant="16" id="lzW-4D-D8t"/>
-                            <constraint firstItem="V6v-B7-KCv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KDQ-hZ-ZY6" secondAttribute="leading" symbolic="YES" id="sA4-lp-hlO"/>
-                            <constraint firstItem="Mrf-BD-1Kw" firstAttribute="centerX" secondItem="3sb-e9-3gH" secondAttribute="centerX" id="xGt-yH-Iji"/>
+                            <constraint firstItem="KDQ-hZ-ZY6" firstAttribute="trailing" secondItem="fcp-0m-XAQ" secondAttribute="trailing" constant="16" id="qKy-vQ-uDx"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="V9d-81-HOw"/>
+                                <exclude reference="YXA-5s-WsN"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="V9d-81-HOw"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="YXA-5s-WsN"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="zpU-OI-5xo" id="4a6-lR-XrW"/>
