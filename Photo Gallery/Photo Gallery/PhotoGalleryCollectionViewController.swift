@@ -12,28 +12,7 @@ class PhotoGalleryCollectionViewController: UICollectionViewController {
     let itemsPerRow: CGFloat = 2
     let sectionInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     
-    let photoArray = [
-        UIImage(named: "1"),
-        UIImage(named: "2"),
-        UIImage(named: "3"),
-        UIImage(named: "4"),
-        UIImage(named: "5"),
-        UIImage(named: "6"),
-        UIImage(named: "7"),
-        UIImage(named: "8"),
-        UIImage(named: "9"),
-        UIImage(named: "10"),
-        UIImage(named: "1"),
-        UIImage(named: "2"),
-        UIImage(named: "3"),
-        UIImage(named: "4"),
-        UIImage(named: "5"),
-        UIImage(named: "6"),
-        UIImage(named: "7"),
-        UIImage(named: "8"),
-        UIImage(named: "9"),
-        UIImage(named: "10")
-    ]
+    let imageNamesArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "1", "2", "3", "4", "5", "6", ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,20 +39,32 @@ class PhotoGalleryCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoArray.count
+        return imageNamesArray.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCollectionViewCell
         
-        let photo = photoArray[indexPath.row]
-        cell.imageView.image = photo
+        let photoName = imageNamesArray[indexPath.row]
+        cell.imageView.image = UIImage(named: photoName)
         
         return cell
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionView.reloadData()
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "photoGalleryToPhoto", sender: imageNamesArray[indexPath.row])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let imageName = sender as? String
+        let photoVC = segue.destination as! PhotoViewController
+        
+        photoVC.imageTitle = imageName
+        photoVC.image = UIImage(named: imageName!)
     }
 }
 
