@@ -9,8 +9,31 @@ import UIKit
 
 class PhotoGalleryCollectionViewController: UICollectionViewController {
     
-    let itemsPerRow: CGFloat = 3
+    let itemsPerRow: CGFloat = 2
     let sectionInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    
+    let photoArray = [
+        UIImage(named: "1"),
+        UIImage(named: "2"),
+        UIImage(named: "3"),
+        UIImage(named: "4"),
+        UIImage(named: "5"),
+        UIImage(named: "6"),
+        UIImage(named: "7"),
+        UIImage(named: "8"),
+        UIImage(named: "9"),
+        UIImage(named: "10"),
+        UIImage(named: "1"),
+        UIImage(named: "2"),
+        UIImage(named: "3"),
+        UIImage(named: "4"),
+        UIImage(named: "5"),
+        UIImage(named: "6"),
+        UIImage(named: "7"),
+        UIImage(named: "8"),
+        UIImage(named: "9"),
+        UIImage(named: "10")
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +59,16 @@ class PhotoGalleryCollectionViewController: UICollectionViewController {
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return photoArray.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath)
-        cell.backgroundColor = .systemYellow
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCollectionViewCell
+        
+        let photo = photoArray[indexPath.row]
+        cell.imageView.image = photo
+        
         return cell
     }
     
@@ -51,6 +76,8 @@ class PhotoGalleryCollectionViewController: UICollectionViewController {
         collectionView.reloadData()
     }
 }
+
+// Configure CollectionView Layout
 
 extension PhotoGalleryCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
